@@ -1,0 +1,8 @@
+FROM tiangolo/uvicorn-gunicorn-fastapi:latest
+
+RUN pip install redis
+
+COPY api.py /app/
+COPY prestart.sh /app/
+COPY populateDB.py /app/
+COPY main.py /app/

@@ -1,0 +1,41 @@
+version: "3"
+
+networks:
+  web:
+    external: true
+  lan:
+    internal: true
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    networks:
+      - web
+      - lan
+    labels:
+      - traefik.backend=frontend
+      - traefik.frontend.rule=Host:mydomain.com
+      - traefik.docker.network=web
+      - traefik.port=80
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
+    restart: always
+    networks:
+      - web
+      - lan
+    labels:
+      - traefik.backend=backend
+      - traefik.frontend.rule=Host:mydomain.com;PathPrefix:/api/
+      - traefik.docker.network=web
+      - traefik.port=80
+
+  database:
+    image: redis
+    restart: always
+    networks:
+      - lan
