@@ -37,32 +37,45 @@
   <p>The is where the fierceless competition takes place, for the honor, for the glory</p>
 </div>
 
+<div id="leaderboard" style="display:none">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">ELO Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+</div>
+
 <form id="score-input" class="col-md-12 m-3" action="/scoreinput/" method="POST" style="display:none">
   <div class="form-row align-items-center">
     <div class="form-group col-md-3 mb-3">
       <label for="Player1">Défense <span class="text-primary">bleue</span></label>
-      <select class="form-control" name="Player1" id="Player1">
-        <option value="" disabled selected hidden>Choisir un joueur</option>
+      <select class="form-control player-selector" name="Player1" id="Player1">
+        <option class="default-player" value="" disabled selected hidden>Choisir un joueur</option>
       </select>
     </div>
     <div class="form-group col-md-3 mb-3">
       <label for="Player2">Défense rouge</label>
-      <select class="form-control" name="Player2" id="Player2">
-        <option value="" disabled selected hidden>Choisir un joueur</option>
+      <select class="form-control player-selector" name="Player2" id="Player2">
+        <option class="default-player" value="" disabled selected hidden>Choisir un joueur</option>
       </select>
     </div>
   </div>
   <div class="form-row align-items-center">
     <div class="form-group col-md-3 mb-3">
       <label for="Player3">Attaque bleue</label>
-      <select class="form-control" name="Player3" id="Player3">
-        <option value="" disabled selected hidden>Choisir un joueur</option>
+      <select class="form-control player-selector" name="Player3" id="Player3">
+        <option class="default-player" value="" disabled selected hidden>Choisir un joueur</option>
       </select>
     </div>
     <div class="form-group col-md-3 mb-3">
       <label for="Player4">Attaque rouge</label>
-      <select class="form-control" name="Player4" id="Player4">
-        <option value="" disabled selected hidden>Choisir un joueur</option>
+      <select class="form-control player-selector" name="Player4" id="Player4">
+        <option class="default-player" value="" disabled selected hidden>Choisir un joueur</option>
       </select>
     </div>
   </div>
