@@ -11,6 +11,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-frontend
+    restart: always
     networks:
       - web
       - lan
