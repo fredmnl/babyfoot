@@ -1,49 +1,48 @@
 
-function homePage(){
-    $("#nav-home").parent().addClass("active");
+function resetPage(){
+    $("#nav-home").parent().removeClass("active");
     $("#nav-leaderboard").parent().removeClass("active");
     $("#nav-games").parent().removeClass("active");
     $("#nav-score-input").parent().removeClass("active");
-    $("#home").show();
+    $("#nav-add-player").parent().removeClass("active");
+    $("#home").hide();
     $("#leaderboard").hide();
     $("#games").hide();
     $("#score-input").hide();
+    $("#add-player").hide();
+};
+
+function homePage(){
+    resetPage();
+    $("#nav-home").parent().addClass("active");
+    $("#home").show();
 };
 
 function leaderboardPage(){
-    $("#nav-home").parent().removeClass("active");
+    resetPage();
     $("#nav-leaderboard").parent().addClass("active");
-    $("#nav-games").parent().removeClass("active");
-    $("#nav-score-input").parent().removeClass("active");
-    $("#score-input").hide();
     $("#leaderboard").show();
-    $("#games").hide();
-    $("#home").hide();
     loadPlayers();
 };
 
 function gamesPage(){
-    $("#nav-home").parent().removeClass("active");
-    $("#nav-leaderboard").parent().removeClass("active");
+    resetPage();
     $("#nav-games").parent().addClass("active");
-    $("#nav-score-input").parent().removeClass("active");
-    $("#score-input").hide();
-    $("#leaderboard").hide();
     $("#games").show();
-    $("#home").hide();
     loadGames();
 };
 
 function scoreInputPage(){
-    $("#nav-home").parent().removeClass("active");
-    $("#nav-leaderboard").parent().removeClass("active");
-    $("#nav-games").parent().removeClass("active");
+    resetPage();
     $("#nav-score-input").parent().addClass("active");
-    $("#home").hide();
-    $("#leaderboard").hide();
-    $("#games").hide();
     $("#score-input").show();
     loadPlayers();
+};
+
+function addPlayerPage(){
+    resetPage();
+    $("#nav-add-player").parent().addClass("active");
+    $("#add-player").show();
 };
 
 function loadPlayers(){
@@ -112,11 +111,22 @@ function submitScore(){
     });
 };
 
+function addPlayer(){
+    $.ajax({
+        url: '/api/addPlayer/?' + $("#add-player").serialize(),
+        type: 'GET',
+        dataType: 'json',
+        success: function(json){
+            $("#add-player").append('<span class="add-player-log">' + JSON.stringify(json) + '</span>');
+        }
+    });
+};
+
 $(document).ready(function(){
-    console.log("ready!");
     $("#nav-home").on("click", homePage);
     $("#nav-leaderboard").on("click", leaderboardPage);
     $("#nav-games").on("click", gamesPage);
     $("#nav-score-input").on("click", scoreInputPage);
+    $("#nav-add-player").on("click", addPlayerPage);
 });
 
