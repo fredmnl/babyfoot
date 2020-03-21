@@ -96,6 +96,22 @@ function loadGames(){
 
 };
 
+function submitScore(){
+    $.ajax({
+        url: '/api/insertGame/?' + $("#score-input").serialize(),
+        type: 'GET',
+        dataType: 'json',
+        success: function(json){
+            $('.score-input-log').remove();
+            if(json['status'] == 'OK'){
+                $(".default-player").prop('selected', true);
+                $(".default-score-selector").click();
+            }
+            $("#score-input").append('<span class="score-input-log">' + JSON.stringify(json) + '</span>');
+        }
+    });
+};
+
 $(document).ready(function(){
     console.log("ready!");
     $("#nav-home").on("click", homePage);

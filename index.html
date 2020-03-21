@@ -71,17 +71,17 @@
     </table>
 </div>
 
-<form id="score-input" class="col-md-12 m-3" action="/scoreinput/" method="POST" style="display:none">
+<form id="score-input" name="myform" class="col-md-12 m-3" action="javascript:void(0);" style="display:none">
   <div class="form-row align-items-center">
     <div class="form-group col-md-3 mb-3">
       <label for="Player1">Défense <span class="text-primary">bleue</span></label>
-      <select class="form-control player-selector" name="Player1" id="Player1">
+      <select class="form-control player-selector" name="blueDefense" id="Player1">
         <option class="default-player" value="" disabled selected hidden>Choisir un joueur</option>
       </select>
     </div>
     <div class="form-group col-md-3 mb-3">
       <label for="Player2">Défense rouge</label>
-      <select class="form-control player-selector" name="Player2" id="Player2">
+      <select class="form-control player-selector" name="redDefense" id="Player2">
         <option class="default-player" value="" disabled selected hidden>Choisir un joueur</option>
       </select>
     </div>
@@ -89,13 +89,13 @@
   <div class="form-row align-items-center">
     <div class="form-group col-md-3 mb-3">
       <label for="Player3">Attaque bleue</label>
-      <select class="form-control player-selector" name="Player3" id="Player3">
+      <select class="form-control player-selector" name="blueOffense" id="Player3">
         <option class="default-player" value="" disabled selected hidden>Choisir un joueur</option>
       </select>
     </div>
     <div class="form-group col-md-3 mb-3">
       <label for="Player4">Attaque rouge</label>
-      <select class="form-control player-selector" name="Player4" id="Player4">
+      <select class="form-control player-selector" name="redOffense" id="Player4">
         <option class="default-player" value="" disabled selected hidden>Choisir un joueur</option>
       </select>
     </div>
@@ -103,48 +103,48 @@
 
   <div class="btn-group btn-group-toggle col-md-3 mb-3" data-toggle="buttons">
     <label class="btn btn-primary active">
-      <input type="radio" name="blueScore" value="0" id="scoreBlue0" autocomplete="off" checked> 0
+      <input class="score-selector default-score-selector" type="radio" name="blueScore" value="0" id="scoreBlue0" autocomplete="off" checked> 0
     </label>
     <label class="btn btn-primary">
-      <input type="radio" name="blueScore" value="1" id="scoreBlue1" autocomplete="off"> 1
+      <input class="score-selector" type="radio" name="blueScore" value="1" id="scoreBlue1" autocomplete="off"> 1
     </label>
     <label class="btn btn-primary">
-      <input type="radio" name="blueScore" value="2" id="scoreBlue2" autocomplete="off"> 2
+      <input class="score-selector" type="radio" name="blueScore" value="2" id="scoreBlue2" autocomplete="off"> 2
     </label>
     <label class="mybtn btn btn-primary">
-      <input type="radio" name="blueScore" value="3" id="scoreBlue3" autocomplete="off"> 3
+      <input class="score-selector" type="radio" name="blueScore" value="3" id="scoreBlue3" autocomplete="off"> 3
     </label>
     <label class="btn btn-primary">
-      <input type="radio" name="blueScore" value="4" id="scoreBlue4" autocomplete="off"> 4
+      <input class="score-selector" type="radio" name="blueScore" value="4" id="scoreBlue4" autocomplete="off"> 4
     </label>
     <label class="btn btn-primary">
-      <input type="radio" name="blueScore" value="5" id="scoreBlue5" autocomplete="off"> 5
+      <input class="score-selector" type="radio" name="blueScore" value="5" id="scoreBlue5" autocomplete="off"> 5
     </label>
   </div>
 
   <div class="btn-group btn-group-toggle col-md-3 mb-3" data-toggle="buttons">
     <label class="btn btn-danger active">
-      <input type="radio" name="redScore" value="0" id="scoreRed0" autocomplete="off" checked> 0
+      <input class="score-selector default-score-selector" type="radio" name="redScore" value="0" id="scoreRed0" autocomplete="off" checked> 0
     </label>
     <label class="btn btn-danger">
-      <input type="radio" name="redScore" value="1" id="scoreRed1" autocomplete="off"> 1
+      <input class="score-selector" type="radio" name="redScore" value="1" id="scoreRed1" autocomplete="off"> 1
     </label>
     <label class="btn btn-danger">
-      <input type="radio" name="redScore" value="2" id="scoreRed2" autocomplete="off"> 2
+      <input class="score-selector" type="radio" name="redScore" value="2" id="scoreRed2" autocomplete="off"> 2
     </label>
     <label class="btn btn-danger">
-      <input type="radio" name="redScore" value="3" id="scoreRed3" autocomplete="off"> 3
+      <input class="score-selector" type="radio" name="redScore" value="3" id="scoreRed3" autocomplete="off"> 3
     </label>
     <label class="btn btn-danger">
-      <input type="radio" name="redScore" value="4" id="scoreRed4" autocomplete="off"> 4
+      <input class="score-selector" type="radio" name="redScore" value="4" id="scoreRed4" autocomplete="off"> 4
     </label>
     <label class="btn btn-danger">
-      <input type="radio" name="redScore" value="5" id="scoreRed5" autocomplete="off"> 5
+      <input class="score-selector" type="radio" name="redScore" value="5" id="scoreRed5" autocomplete="off"> 5
     </label>
   </div>
 
   <div class="col-md-6 mb-3">
-    <button type="submit" class="btn btn-primary mb-2">Valider</button>
+    <button type="submit" class="btn btn-primary mb-2" onClick="submitScore()">Valider</button>
   </div>
 
 </form>

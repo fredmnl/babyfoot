@@ -87,3 +87,15 @@ def insertGame(blueDefense, blueOffense, redDefense, redOffense, blueScore, redS
                         'blueScore'  : blueScore,
                         'redScore'   : redScore})
 
+    return {'game': new_game,
+            'blueDefense': blueDefense,
+            'blueOffense': blueOffense,
+            'redDefense' : redDefense,
+            'redOffense' : redOffense,
+            f'elo-{blueDefense}' : blueDefenseElo,
+            f'elo-{blueOffense}' : blueOffenseElo,
+            f'elo-{redDefense}' : redDefenseElo,
+            f'elo-{redOffense}' : redOffenseElo,
+            'deltaElo' : delta_elo,
+            'blueScore'  : blueScore,
+            'redScore'   : redScore}
