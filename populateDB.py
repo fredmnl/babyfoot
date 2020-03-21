@@ -1,5 +1,9 @@
-
+import random
 from api import *
+
+# Allow time for the DB to start
+while not db.ping():
+    sleep(0.1)
 
 addPlayer('Bruno')
 addPlayer('Camille')
@@ -8,7 +12,15 @@ addPlayer('Cyrille')
 addPlayer('Romain')
 addPlayer('Frédéric')
 
-insertGame('Bruno', 'Camille', 'Damien', 'Cyrille', 5, 2)
-insertGame('Bruno', 'Camille', 'Frédéric', 'Romain', 3, 5)
-insertGame('Cyrille', 'Damien', 'Frédéric', 'Romain', 5, 4)
-insertGame('Cyrille', 'Camille', 'Frédéric', 'Damien', 5, 1)
+players = [player["name"] for player in getPlayers()]
+
+for _ in range(10):
+    sample = random.sample(players, 4)
+    losingScore = random.choice([0, 1, 2, 3, 4])
+    if random.choice(["blue", "red"]) == "blue":
+        blueScore = 5
+        redScore = losingScore
+    else:
+        blueScore = losingScore
+        redScore = 5
+    insertGame(sample[0], sample[1], sample[2], sample[3], blueScore, redScore)
