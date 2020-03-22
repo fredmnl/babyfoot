@@ -7,7 +7,10 @@ def addPlayer(player):
 
 def getPlayers():
     players = []
-    game_id = db.get('game-id').decode('utf-8')
+    try:
+        game_id = db.get('game-id').decode('utf-8')
+    except:
+        game_id = 0
     last_game_data = db.hgetall(f'game-{game_id}')
     for player in db.smembers('players'):
         name = player.decode('utf-8')
